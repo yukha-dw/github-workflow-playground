@@ -1,6 +1,6 @@
 on:
   push:
-  workflow_dispatch:
+  # workflow_dispatch:
     # inputs:
     #   logLevel:
     #     description: 'Log level'
@@ -24,12 +24,19 @@ jobs:
       - name: Debug
         run: |-
           echo ${{ github.repository }}
-      - name: Get Public Key
+
+      # - name: Get Public Key
+      #   run: |-
+      #     gh api \
+      #     -H "Accept: application/vnd.github+json" \
+      #     -H "X-GitHub-Api-Version: 2022-11-28" \
+      #     /repos/${{ github.repository }}/actions/secrets/public-key
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
+
+      - name: List
         run: |-
-          gh api \
-          -H "Accept: application/vnd.github+json" \
-          -H "X-GitHub-Api-Version: 2022-11-28" \
-          /repos/${{ github.repository }}/actions/secrets/public-key
+          gh secret set DEBUG_SECRET < secrets/secret_a.jsonl
         env:
           GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
 
@@ -51,11 +58,17 @@ jobs:
       #   env:
       #     GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
 
-      # - name: Check
-      #   run: |-
-      #     gh api \
-      #     -H "Accept: application/vnd.github+json" \
-      #     -H "X-GitHub-Api-Version: 2022-11-28" \
-      #     /repos/${{ github.repository }}/actions/secrets/SECRET_NAME
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
+      - name: Check
+        run: |-
+          gh api \
+          -H "Accept: application/vnd.github+json" \
+          -H "X-GitHub-Api-Version: 2022-11-28" \
+          /repos/${{ github.repository }}/actions/secrets/DEBUG_SECRET
+        env:
+          GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
+
+      - name: List
+        run: |-
+          gh secret list
+        env:
+          GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
