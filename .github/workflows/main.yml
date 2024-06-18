@@ -14,8 +14,8 @@ on:
         description: 'Test scenario tags'
         required: true
         type: string
-  schedule:
-    - cron: "*/5 * * * *"
+#  schedule:
+#    - cron: "*/5 * * * *"
   push:
 jobs:
   print-tag:
