@@ -42,13 +42,21 @@ jobs:
 
       - name: Check gh
         run: |-
+          DEBUG_SECRET_ENV="{\"id\":\"${GENERATED_ID}\", \"password\":\"${GENERATED_PASSWORD}\"}"
           gh secret set DEBUG_SECRET < secrets/secret_a.jsonl
+          gh variable set DEBUG_VARIABLE < secrets/secret_a.jsonl
         env:
           GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
 
       - name: List
         run: |-
           gh secret list
+        env:
+          GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
+
+      - name: List variable
+        run: |-
+          gh variable list
         env:
           GH_TOKEN: ${{ secrets.GW_7DAYS_RWSECRETS }}
 
@@ -63,3 +71,15 @@ jobs:
           echo "${DEBUG_SECRET_ENV}" | jq
         env:
           DEBUG_SECRET_ENV: ${{ secrets.DEBUG_SECRET }}
+
+      - name: Check variables
+        run: |-
+          echo "${DEBUG_VARIABLE_ENV}"
+        env:
+          DEBUG_VARIABLE_ENV: ${{ env.DEBUG_VARIABLE }}
+
+      - name: Check variables II
+        run: |-
+          echo "${DEBUG_VARIABLE_ENV}" | jq
+        env:
+          DEBUG_VARIABLE_ENV: ${{ env.DEBUG_VARIABLE }}
