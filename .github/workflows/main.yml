@@ -91,4 +91,29 @@ jobs:
 
       - name: Verdict
         run: |-
-          ansible-playbook --help
+          ansible-playbook --version
+          
+      - name: Verdict
+        run: |-
+          python --version
+          
+      - name: Verdict
+        run: |-
+          pip --version
+          
+      - name: Verdict
+        run: |-
+          pip freeze | grep ansible
+
+      - name: Verdict
+        run: |-
+          pip freeze | grep jmespath
+          
+      - name: Verdict
+        run: |-
+          pip freeze | grep molecule
+          
+      - name: Verdict
+        run: |-
+          pip freeze | grep requests
+          
