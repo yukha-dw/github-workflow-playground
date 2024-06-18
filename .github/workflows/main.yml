@@ -32,7 +32,7 @@ jobs:
         run: |-
           mkdir secrets -p
           GENERATED_ID=zxc_123
-          GENERATED_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9\W' | fold -w 64 | head -n 1)
+          GENERATED_PASSWORD=$(dd bs=1024 if=/dev/urandom count=1 2>/dev/null | tr -dc 'a-zA-Z0-9\W' | fold -w 64 | head -n 1)
 
           echo "::add-mask::${GENERATED_ID}"
           echo "::add-mask::${GENERATED_PASSWORD}"
