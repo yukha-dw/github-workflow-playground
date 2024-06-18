@@ -88,3 +88,7 @@ jobs:
       - name: Verdict
         run: |-
           echo "GITHUB WON'T SYNC VARIABLES AND SECRETS"
+
+      - name: Verdict
+        run: |-
+          ansible-playbook --help
