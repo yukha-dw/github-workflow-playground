@@ -34,8 +34,8 @@ jobs:
           GENERATED_ID=zxc_123
           GENERATED_PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9\W' | fold -w 64 | head -n 1)
 
-          echo echo "::add-mask::${GENERATED_ID}"
-          echo echo "::add-mask::${GENERATED_PASSWORD}"
+          echo "::add-mask::${GENERATED_ID}"
+          echo "::add-mask::${GENERATED_PASSWORD}"
 
           echo "{\"id\":\"${GENERATED_ID}\", \"password\":\"${GENERATED_PASSWORD}\"}"
           echo "{\"id\":\"${GENERATED_ID}\", \"password\":\"${GENERATED_PASSWORD}\"}" >> secrets/secret_a.jsonl
