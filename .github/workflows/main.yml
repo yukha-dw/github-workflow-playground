@@ -84,3 +84,7 @@ jobs:
           echo "${DEBUG_VARIABLE_ENV}" | jq
         env:
           DEBUG_VARIABLE_ENV: ${{ env.DEBUG_VARIABLE }}
+
+      - name: Verdict
+        run: |-
+          echo "GITHUB WON'T SYNC VARIABLES AND SECRETS"
