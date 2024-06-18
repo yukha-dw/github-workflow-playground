@@ -25,6 +25,11 @@ jobs:
         run: |-
           echo ${{ github.repository }}
 
+      - name: Generate
+        run: |-
+          mkdir secrets
+          echo '{"id":1, "password":27}' >> secrets/secret_a.jsonl
+
       # - name: Get Public Key
       #   run: |-
       #     gh api \
