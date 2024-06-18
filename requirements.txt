@@ -1,0 +1,5 @@
+ansible>=1.0.0
+ansible-lint>=1.0.0
+jmespath>=1.0.0
+molecule>=1.0.0
+molecule-docker>=1.0.0
