@@ -1,0 +1,17 @@
+on:
+  workflow_call:
+
+jobs:
+  print-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verdict
+        run: |-
+          echo -e "secret_1=hello" > secrets_b/secrets2.txt
+
+      - name: Verdict
+        run: |-
+          cat secrets_b/secrets2.txt
