@@ -11,7 +11,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: secrets2
-          path: './secrets_b/secrets2.txt'
+          path: './secrets_b'
     
       - name: Verdict
         run: |-
