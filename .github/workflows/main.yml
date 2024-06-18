@@ -113,4 +113,29 @@ jobs:
 
       - name: Verdict
         run: |-
+          SECRET_1=secret1
+          SECRET_2=secret2
+          SECRET_3=secret3
+          SECRET_4=secret4
+          
+          cat > "secrets_b/secrets.txt" << EOF
+          secret_z:
+            secret_z1: ${SECRET_1}
+            secret_z2: ${SECRET_2}
+          secret_y:
+            secret_y1: ${SECRET_3}
+            secret_y2: ${SECRET_4}
+          secret_x:
+            secret_x1: ${secret_a}
+            secret_x2: ${secret_b}
+          EOF
+        env:
+          secret_a: ${{ secrets.YOUR_SECRET_NAME_ID }}
+          secret_b: ${{ secrets.YOUR_SECRET_NAME_PASSWORD }}
+
+      - name: Verdict
+        run: |-
           cat secrets_b/secrets.txt
+
+
+          
