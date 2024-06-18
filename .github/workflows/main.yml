@@ -20,6 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the input tag to STDOUT
-        run: >-
-          echo 'The logLevel are ${{ inputs.logLevel }}' && \
-          echo 'The tags are ${{ inputs.tags }}'
+        run: echo 'The logLevel are ${{ inputs.logLevel }}'
+      - name: Print the input tag to STDOUT
+        run: echo 'The tags are ${{ inputs.tags }}'
