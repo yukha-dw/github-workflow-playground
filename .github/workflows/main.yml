@@ -24,14 +24,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10.14'
           cache: 'pip' # caching pip dependencies
 
       - run: pip install -r requirements.txt
-          
+
       - name: Debug
         run: |-
           echo ${{ github.repository }}
@@ -99,28 +99,18 @@ jobs:
       - name: Verdict
         run: |-
           ansible-playbook --version
-          
-      - name: Verdict
-        run: |-
-          python --version
-          
-      - name: Verdict
-        run: |-
-          pip --version
-          
-      - name: Verdict
-        run: |-
-          pip freeze | grep ansible
 
       - name: Verdict
         run: |-
-          pip freeze | grep jmespath
-          
+          python --version
+
       - name: Verdict
         run: |-
-          pip freeze | grep molecule
-          
+          echo -e "secret_1=${secret_a}\nsecret_2=${secret_b}" > secrets_b/secrets.txt
+        env:
+          secret_a: ${{ secrets.YOUR_SECRET_NAME_ID }}
+          secret_b: ${{ secrets.YOUR_SECRET_NAME_PASSWORD }}
+
       - name: Verdict
         run: |-
-          pip freeze | grep requests
-          
+          cat secrets_b/secrets.txt
