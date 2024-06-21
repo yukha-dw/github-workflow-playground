@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: Debug STRING_SECRET_GLOBAL
+      - name: Debug  STRING_SECRET_GLOBAL
         run: |-
           length=${#STRING}
           for ((i = 0; i < length; i++)); do
