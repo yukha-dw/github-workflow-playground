@@ -1,0 +1,39 @@
+on:
+  push:
+jobs:
+  print-tag:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: Debug STRING_SECRET_GLOBAL
+        run: |-
+          string="Hello, World!"
+          length=${#string}
+          for ((i = 0; i < length; i++)); do
+            char="${string:i:1}"
+            echo "Character at position $i: $char"
+          done
+        env:
+          STRING: ${{ secrets.STRING_SECRET_GLOBAL }}
+      - name: Debug STRING_SECRET_DEV
+        run: |-
+          string="Hello, World!"
+          length=${#string}
+          for ((i = 0; i < length; i++)); do
+            char="${string:i:1}"
+            echo "Character at position $i: $char"
+          done
+        env:
+          STRING: ${{ secrets.STRING_SECRET_DEV }}
+      - name: Debug STRING_SECRET_BOTH
+        run: |-
+          string="Hello, World!"
+          length=${#string}
+          for ((i = 0; i < length; i++)); do
+            char="${string:i:1}"
+            echo "Character at position $i: $char"
+          done
+        env:
+          STRING: ${{ secrets.STRING_SECRET_BOTH }}
+
+          
