@@ -36,5 +36,12 @@ jobs:
         run: |-
           echo "${{ secrets.STRING_SECRET_BOTH }}" >> secretly-secret.txt
           cat secretly-secret.txt
+      - name: Test echo
+        run: |-
+          echo "print secret ${{ secrets.STRING_SECRET_IS_SECRET }}"
+          echo "print SECRET secret secret"
+          echo "SECRET"
+          echo "secret"
+          echo "secret"
 
           
