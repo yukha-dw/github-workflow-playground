@@ -46,13 +46,13 @@ jobs:
       - name: Test missing secret
         run: |-
           echo "print secret '${{ secrets.MISSING_SECRET }}'"
-          elif [ "${{ secrets.MISSING_SECRET }}" = "" ]; then
+          if [ "${{ secrets.MISSING_SECRET }}" = "" ]; then
             echo "NO SECRET"
           fi
       - name: Test missing vars
         run: |-
           echo "print secret '${{ vars.MISSING_VARS }}'"
-          elif [ "${{ vars.MISSING_VARS }}" = "" ]; then
+          if [ "${{ vars.MISSING_VARS }}" = "" ]; then
             echo "NO VARS"
           fi
 
