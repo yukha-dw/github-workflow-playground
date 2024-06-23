@@ -32,5 +32,9 @@ jobs:
           done
         env:
           STRING: ${{ secrets.STRING_SECRET_BOTH }}
+      - name: Test langsung pake - Debug STRING_SECRET_BOTH
+        run: |-
+          echo "${{ secrets.STRING_SECRET_BOTH }}" >> secretly-secret.txt
+          cat secretly-secret.txt
 
           
