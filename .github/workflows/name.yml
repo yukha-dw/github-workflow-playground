@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - NONEXISTENT_BRANCH_feat/clickhouse-github-actions
+      - NONEXISTENT_BRANCH
 jobs:
   print-tag:
     runs-on: ubuntu-latest
