@@ -1,5 +1,7 @@
 on:
   push:
+    branches:
+      - NONEXISTENT_BRANCH_feat/clickhouse-github-actions
 
 jobs:
   call-work:
