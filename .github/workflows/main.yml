@@ -6,7 +6,7 @@ on:
         description: 'Log level'
         required: true
         default: 'warning'
-        type: string
+        type: choice
         options:
           - info
           - warning
