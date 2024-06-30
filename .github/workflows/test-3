@@ -1,0 +1,31 @@
+name: Env test 3
+
+run-name: Env test 3 - ${{ inputs.environment || 'dev' }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment
+        type: environment
+        default: stg
+        required: true
+
+jobs:
+  env-test:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.environment || 'dev' }}
+    steps:
+      - name: env
+        run: |-
+          echo ${{ inputs.environment }}
+      - name: Debug STRING_SECRET_BOTH
+        run: |-
+          length=${#STRING}
+          for ((i = 0; i < length; i++)); do
+            char="${STRING:i:1}"
+            echo "Character at position $i: $char"
+          done
+        env:
+          STRING: ${{ secrets.STRING_SECRET_BOTH }}
