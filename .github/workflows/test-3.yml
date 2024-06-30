@@ -10,7 +10,20 @@ on:
         type: environment
         default: stg
         required: true
-
+      test_number_negative:
+        description: "negative number"
+        type: string
+        default: '-1'
+        required: true
+      list:
+        description: "list"
+        type: string
+        default: all
+        required: true
+      no_default:
+        description: "no_default"
+        type: string
+        required: true
 jobs:
   env-test:
     runs-on: ubuntu-latest
@@ -20,6 +33,29 @@ jobs:
       - name: env
         run: |-
           echo ${{ inputs.environment }}
+      - name: test_number_negative
+        run: |-
+          echo ${test_number_negative_env}
+        env:
+          test_number_negative_env: ${{ inputs.test_number_negative || '-1' }}
+
+      - name: Listlist
+        run: |-
+          if [ "${LISTLIST}" = "" ] || [ "${LISTLIST}" = "all" ]
+          then
+            echo "listlist is blank or all, check: '${LISTLIST}'"
+          else
+            echo "listlist is unique, check: '${LISTLIST}'"
+          fi
+        env:
+          LISTLIST: ${{ inputs.list || 'all' }}
+
+      - name: nodefault
+        run: |-
+          echo "'${nodefaultttt}'"
+        env:
+          nodefaultttt: ${{ inputs.no_default || 'lah bisa kosong' }}
+
       - name: Debug STRING_SECRET_BOTH
         run: |-
           length=${#STRING}
